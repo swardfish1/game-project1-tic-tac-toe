@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Woo it Works</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+
+    <body>
+      <div class="container">
+        <h1>Tattoos and Tequila</h1>
+        <div id="alert"></div>
+
+        <!-- SU Button -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signUpModal">
+          Sign Up
+        </button>
+
+        <!-- SI Button -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signInModal">
+          Sign In
+        </button>
+
+        <!-- CP Button -->
+  <input type="hidden" runat="server" value="">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#changePasswordModal">
+          Change Password
+        </button>
+
+        <button id="sign-out" class="btn btn-danger">Sign Out</button>
+
+        <!--Sign Up Modal-->
+        <div class="modal fade" tabindex="-1" role="dialog" id="signUpModal">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+
+                <h2 class="modal-title">Sign Up</h2>
+              </div>
+              <div class="modal-body">
+                <div id="error"></div>
+                <form class="form" id="sign-up-form">
+                  Email: <input type="text" name="credentials[email]" placeholder="Email" class="form-control">
+                  Password: <input type="password" name="credentials[password]" placeholder="Pick a password, any password." class="form-control">
+                  Confirm Password: <input name="credentials[password_confirmation]" type="password" placeholder="Make sure it matches!" class="form-control">
+                  <br>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--Sign In Modal-->
+        <div class="modal fade" tabindex="-1" role="dialog" id="signInModal">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <h2 class="modal-title">Sign In</h2>
+              </div>
+              <div class="modal-body">
+                <div id="error"></div>
+                <form class="form" id="sign-in-form">
+                  Email:
+                  <input type="text" name="credentials[email]" placeholder="Email" class="form-control">
+                  Password:
+                  <input type="password" name="credentials[password]" placeholder="Pick a password, any password. As long as its your password" class="form-control">
+                  <button type="submit" class="btn btn-sm btn-primary btn-modal">Sign In</button>
+                </form>
+              </div>
+              <div class="modal-footer footer">
+                <h6>Copyright &copy; 2018 The Cake is a Lie. All rights reserved.</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--Change Pword Modal-->
+        <div class="modal fade" tabindex="-1" role="dialog" id="changePasswordModal">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <h2 class="modal-title">Change Password</h2>
+              </div>
+              <div class="modal-body">
+                <div id="error"></div>
+                <form class="form-inline" id="change-password">
+                  New Password: <input type="password" name="passwords[new]" placeholder="New Password" class="form-control">
+                  Old Password: <input type="password" name="passwords[old]" placeholder="Old Password" class="form-control">
+                  <button type="submit" class="btn btn-sm btn-primary btn-modal">Change Password</button>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <h6>Copyright &copy; 2018 The Cake is a Lie. All rights reserved.</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-2"></div>
+      <div class="col-md-2"></div>
+
+    </body>
+</html>
