@@ -12,11 +12,9 @@ $(() => {
   $('#sign-in-form').on('submit', authEvents.onSignIn)
   $('#change-password').on('submit', authEvents.onChangePassword)
   $('#sign-out').on('click', authEvents.onSignOut)
-
   //close alerts
-  $('#alert').click(function (e) {
-    $(this).fadeOut('slow');
-  });
+  $('.square').on('click', function (data) {
+    authEvents.alternate(data.target.id)
+  })
   //close modal
-
 })

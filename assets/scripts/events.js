@@ -43,9 +43,20 @@ const onSignOut = function (event) {
     .catch(ui.SignOutFail)
 }
 
+
+// alternate inputType ('X' or 'O')
+const alternate = function (id) {
+  event.preventDefault()
+  const value = ui.setSquareValue(id)
+  $(event.target).text(value)
+}
+
+
+
 module.exports = {
   onSignUp: onSignUp,
   onSignIn: onSignIn,
   onChangePassword: onChangePassword,
-  onSignOut: onSignOut
+  onSignOut: onSignOut,
+  alternate: alternate
 }

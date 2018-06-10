@@ -1,6 +1,8 @@
 'use strict'
 const store = require('./store')
 
+let inputType
+
 const signUpSuccess = function (signUpResponse) {
   $('#alert').html(`
     <div class= "alert alert-success">
@@ -73,6 +75,18 @@ const signOutFail = function (response) {
     `)
 }
 
+const setSquareValue = function (id) {
+  inputType = inputType == 'X' ? 'O' : 'X'
+  //
+  // if (inputType === 'X') {
+  //   inputType = 'O'
+  // } else {
+  //   inputType = 'X';
+  // }
+  return inputType
+
+}
+
 module.exports = {
   signUpSuccess: signUpSuccess,
   signUpError: signUpError,
@@ -81,5 +95,6 @@ module.exports = {
   signOutSuccess: signOutSuccess,
   signOutFail: signOutFail,
   changePasswordSuccess: changePasswordSuccess,
-  changePasswordError: changePasswordError
+  changePasswordError: changePasswordError,
+  setSquareValue: setSquareValue
 }

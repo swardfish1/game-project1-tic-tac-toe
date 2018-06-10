@@ -14,26 +14,21 @@
 
     <body>
       <div class="container">
+        <div class="btn-group" role="group" aria-label="...">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signUpModal">
+            Sign Up
+          </button>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signInModal">
+            Sign In
+          </button>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#changePasswordModal">
+            Change Password
+          </button>
+          <button id="sign-out" class="btn btn-danger">Sign Out</button>
+        </div>
+        <br><br>
         <h1>Tattoos and Tequila</h1>
         <div id="alert"></div>
-
-        <!-- SU Button -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signUpModal">
-          Sign Up
-        </button>
-
-        <!-- SI Button -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signInModal">
-          Sign In
-        </button>
-
-        <!-- CP Button -->
-  <input type="hidden" runat="server" value="">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#changePasswordModal">
-          Change Password
-        </button>
-
-        <button id="sign-out" class="btn btn-danger">Sign Out</button>
 
         <!--Sign Up Modal-->
         <div class="modal fade" tabindex="-1" role="dialog" id="signUpModal">
@@ -112,8 +107,25 @@
         </div>
       </div>
 
-      <div class="col-md-2"></div>
-      <div class="col-md-2"></div>
+      <br><br><br><br>
+
+      <div class="table">
+        <div class="row">
+          <div id="square-1" class="square col-md-2 lt-box box"></div>
+          <div id="square-2" class="square col-md-2 mt-box"></div>
+          <div id="square-3" class="square col-md-2 rt-box"></div>
+        </div>
+        <div class="row">
+          <div id="square-4" class="square col-md-2 lm-box"></div>
+          <div id="square-5" class="square col-md-2 mm-box"></div>
+          <div id="square-6" class="square col-md-2 rm-box"></div>
+        </div>
+        <div class="row">
+          <div id="square-7" class="square col-md-2 lb-box"></div>
+          <div id="square-8" class="square col-md-2 mb-box"></div>
+          <div id="square-9" class="square col-md-2 rb-box"></div>
+        </div>
+      </div>
 
     </body>
 </html>

@@ -1,4 +1,49 @@
-.col-md-4 {
+.col-md-2 {
+  height: 175px;
   border: 2px solid black;
-  height: 50px;
+}
+
+.lt-box {
+  border-left: 2px solid white;
+  border-top: 2px solid white;
+}
+
+.mt-box {
+  border-top: 2px solid white;
+}
+
+.rt-box {
+ border-top: 2px solid white;
+ border-right: 2px solid white;
+}
+
+
+.lm-box {
+  border-left: 2px solid white
+}
+
+.rm-box {
+  border-right: 2px solid white;
+}
+
+.lb-box {
+  border-left: 2px solid white;
+  border-bottom: 2px solid white;
+}
+
+.mb-box {
+  border-bottom: 2px solid white;
+}
+
+.rb-box {
+ border-bottom: 2px solid white;
+ border-right: 2px solid white;
+}
+
+.tac-button {
+  border-radius: 3px;
+  border: 1px solid gray;
+  height: 30px;
+  width: 30px;
+  text-align: center;
 }
