@@ -12,6 +12,7 @@ const signUpSuccess = function (signUpResponse) {
     $('#signUpModal').modal('hide')
     signedInState()
 }
+
 const signUpError = function (error) {
   $('#error').html(`
     <div class= "alert alert-danger alert-dismissable">
@@ -39,6 +40,7 @@ const signInSuccess = function (response) {
     $('#signInModal').modal('hide')
     signedInState()
 }
+
 const signInError = function (error) {
   $('#alert').html(`
     <div class= "alert alert-danger">
@@ -93,30 +95,31 @@ const signOutFail = function (response) {
     `)
 }
 
-const updateUi = function (gameStatus) {
-  for (var i = 0; i < gameStatus.boardState.length; i++) {
-    $(`#${i}`).html(gameStatus.boardState[i])
+const updateUi = function (game) {
+  for (var i = 0; i < game.boardState.length; i++) {
+    $(`#${i}`).html(game.boardState[i])
   }
   //updateScore
-  $('#xscore').html(gameStatus.xScore)
-  $('#oscore').html(gameStatus.oScore)
+  $('#xscore').html(game.xScore)
+  $('#oscore').html(game.oScore)
   //display win winMessage
-  if (gameStatus.winner){
+  if (game.winner){
     $('#winMessage').html(`
         <div class= "alert alert-success alert-dismissable">
           <div>
-          Winner is: ${gameStatus.winner}
+          Winner is: ${game.winner}
           <button type="submit" id="clear" data-dismiss="alert" class="btn btn-sm close">Reset</button>
           </div>
         </div>
       `)
   }
 }
+
 const clearBoard = function () {
   $('.square').html('')
-  boardLogic.gameStatus.boardState = []
-  boardLogic.gameStatus.squareValue = ''
-  boardLogic.gameStatus.winner = ''
+  boardLogic.game.boardState = []
+  boardLogic.game.squareValue = ''
+  boardLogic.game.winner = ''
 }
 
 const alreadyClicked = function () {

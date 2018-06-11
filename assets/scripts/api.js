@@ -1,6 +1,7 @@
 'use strict'
 const store = require('./store')
 const url = require('./config')
+const boardLogic = require('./boardLogic')
 
 const signUp = function (data) {
   return $.ajax({

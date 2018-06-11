@@ -1,5 +1,6 @@
 
-let gameStatus = {
+let game = {
+  over: false,
   winner: '',
   winningCombo: [],
   squareValue: '',
@@ -22,12 +23,12 @@ const winCombos = [
 const processMove = function (id) {
   setSquareValue(id)
   checkForWinners()
-  return gameStatus
+  return game
 }
 
 const setSquareValue = function (id) {
-  gameStatus.squareValue = gameStatus.squareValue == 'X' ? 'O' : 'X'
-  gameStatus.boardState[id] = gameStatus.squareValue
+  game.squareValue = game.squareValue == 'X' ? 'O' : 'X'
+  game.boardState[id] = game.squareValue
 }
 
 function checkForWinners () {
@@ -37,21 +38,22 @@ function checkForWinners () {
 }
 
 const checkWin = function (a, b, c) {
-  if (!!gameStatus.boardState[a] && gameStatus.boardState[a] === gameStatus.boardState[b] && gameStatus.boardState[b] === gameStatus.boardState[c]) {
-    gameStatus.winner = gameStatus.squareValue
+  if (!!game.boardState[a] && game.boardState[a] === game.boardState[b] && game.boardState[b] === game.boardState[c]) {
+    game.winner = game.squareValue
     updateScore()
   }
 }
 
 const updateScore = function () {
-  if (gameStatus.winner === 'X') {
-    gameStatus.xScore ++
-  } else if (gameStatus.winner === 'O') {
-    gameStatus.oScore ++
+  if (game.winner === 'X') {
+    game.xScore ++
+  } else if (game.winner === 'O') {
+    game.oScore ++
   }
+  game.over = true
 }
 
 module.exports = {
   processMove: processMove,
-  gameStatus: gameStatus
+  game: game
 }
