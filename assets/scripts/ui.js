@@ -1,26 +1,35 @@
 'use strict'
 const store = require('./store')
-
-let inputType
+const boardLogic = require('./boardLogic')
 
 const signUpSuccess = function (signUpResponse) {
   $('#alert').html(`
-    <div class= "alert alert-success">
-      <button type="button" class="close" aria-hidden="true">&times;</button>
+    <div class= "alert alert-success alert-dismissable">
+      <button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>
       Signed up! Get playing!
     </div>
     `)
     $('#signUpModal').modal('hide')
+    signedInState()
 }
 const signUpError = function (error) {
   $('#error').html(`
-    <div class= "alert alert-danger">
-      <button type="button" class="close" aria-hidden="true">&times;</button>
+    <div class= "alert alert-danger alert-dismissable">
+      <button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>
       Error signing up. Please check for errors.
     </div>
     `)
 }
+
+const signedInState = function () {
+  event.preventDefault()
+  debugger
+  $('#change-password, #sign-out, #game-board, #footer').removeClass('hidden')
+  $('#sign-up, #sign-in').addClass('hidden')
+}
+
 const signInSuccess = function (response) {
+  debugger
   $('#alert').html(`
     <div class= "alert alert-success">
       <button type="button" class="close" aria-hidden="true">&times;</button>
@@ -28,6 +37,7 @@ const signInSuccess = function (response) {
     </div>
     `)
     $('#signInModal').modal('hide')
+    signedInState()
 }
 const signInError = function (error) {
   $('#alert').html(`
@@ -40,8 +50,8 @@ const signInError = function (error) {
 
 const changePasswordSuccess = function (response) {
   $('#alert').html(`
-    <div class= "alert alert-success">
-      <button type="button" class="close" aria-hidden="true">&times;</button>
+    <div class= "alert alert-success alert-dismissable">
+      <button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>
       Password Changed!
     </div>
     `)
@@ -50,41 +60,72 @@ const changePasswordSuccess = function (response) {
 
 const changePasswordError = function (error) {
   $('#alert').html(`
-    <div class= "alert alert-danger">
-      <button type="button" class="close" aria-hidden="true">&times;</button>
+    <div class= "alert alert-danger alert-dismissable">
+      <button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>
       Could not change password.
     </div>
     `)
 }
 
+const signedOutState = function () {
+  debugger
+  event.preventDefault()
+  $('#change-password, #sign-out, #game-board, #footer').addClass('hidden')
+  $('#sign-up, #sign-in').removeClass('hidden')
+}
+
 const signOutSuccess = function (response) {
   $('#alert').html(`
-    <div class= "alert alert-success">
-      <button type="button" class="close" aria-hidden="true">&times;</button>
+    <div class= "alert alert-success alert-dismissable">
+      <button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>
       Signed Out
     </div>
     `)
+    signedOutState()
 }
 
 const signOutFail = function (response) {
   $('#alert').html(`
-    <div class= "alert alert-danger">
-      <button type="button" class="close" aria-hidden="true">&times;</button>
+    <div class= "alert alert-danger alert-dismissable">
+      <button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>
       Could not sign out.
     </div>
     `)
 }
 
-const setSquareValue = function (id) {
-  inputType = inputType == 'X' ? 'O' : 'X'
-  //
-  // if (inputType === 'X') {
-  //   inputType = 'O'
-  // } else {
-  //   inputType = 'X';
-  // }
-  return inputType
+const updateUi = function (gameStatus) {
+  for (var i = 0; i < gameStatus.boardState.length; i++) {
+    $(`#${i}`).html(gameStatus.boardState[i])
+  }
+  //updateScore
+  $('#xscore').html(gameStatus.xScore)
+  $('#oscore').html(gameStatus.oScore)
+  //display win winMessage
+  if (gameStatus.winner){
+    $('#winMessage').html(`
+        <div class= "alert alert-success alert-dismissable">
+          <div>
+          Winner is: ${gameStatus.winner}
+          <button type="submit" id="clear" data-dismiss="alert" class="btn btn-sm close">Reset</button>
+          </div>
+        </div>
+      `)
+  }
+}
+const clearBoard = function () {
+  $('.square').html('')
+  boardLogic.gameStatus.boardState = []
+  boardLogic.gameStatus.squareValue = ''
+  boardLogic.gameStatus.winner = ''
+}
 
+const alreadyClicked = function () {
+  $('#winMessage').html(`
+    <div class= "alert alert-danger alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      Already Taken
+    </div>
+    `)
 }
 
 module.exports = {
@@ -96,5 +137,7 @@ module.exports = {
   signOutFail: signOutFail,
   changePasswordSuccess: changePasswordSuccess,
   changePasswordError: changePasswordError,
-  setSquareValue: setSquareValue
+  updateUi: updateUi,
+  clearBoard: clearBoard,
+  alreadyClicked: alreadyClicked
 }

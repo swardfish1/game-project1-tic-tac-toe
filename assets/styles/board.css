@@ -3,6 +3,25 @@
   border: 2px solid black;
 }
 
+.square {
+  font-size: 100px;
+  text-align: center;
+  line-height: 175px;
+}
+
+@media screen and (max-width: 768px) {
+    .square {
+      height: 75px;
+      line-height: 75px;
+      font-size: 50px;
+
+    }
+}
+
+.hidden {
+  display: none;
+}
+
 .lt-box {
   border-left: 2px solid white;
   border-top: 2px solid white;
@@ -38,12 +57,4 @@
 .rb-box {
  border-bottom: 2px solid white;
  border-right: 2px solid white;
-}
-
-.tac-button {
-  border-radius: 3px;
-  border: 1px solid gray;
-  height: 30px;
-  width: 30px;
-  text-align: center;
 }

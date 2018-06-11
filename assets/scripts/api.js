@@ -5,7 +5,7 @@ const url = require('./config')
 const signUp = function (data) {
   return $.ajax({
     method: 'POST',
-    url: url.apiUrl + '/sign-up',
+    url: url.apiUrl + 'sign-up',
     data: data
   })
 }
@@ -13,7 +13,7 @@ const signUp = function (data) {
 const signIn = function (data) {
   return $.ajax({
     method: 'POST',
-    url: url.apiUrl + '/sign-in',
+    url: url.apiUrl + 'sign-in',
     data: data
   })
 }
@@ -21,7 +21,7 @@ const signIn = function (data) {
 const changePassword = function (data) {
   return $.ajax({
     method: 'PATCH',
-    url: url.apiUrl + '/change-password',
+    url: url.apiUrl + 'change-password',
     data: data,
     headers: {
       Authorization: 'Token token=' + store.token
@@ -32,7 +32,7 @@ const changePassword = function (data) {
 const signOut = function () {
   return $.ajax({
     method: 'DELETE',
-    url: url.apiUrl + '/sign-out',
+    url: url.apiUrl + 'sign-out',
     headers: {
       Authorization: 'Token token=' + store.token
     }
