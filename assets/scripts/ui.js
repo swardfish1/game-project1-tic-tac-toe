@@ -22,23 +22,20 @@ const signUpError = function (error) {
     `)
 }
 
-const signedInState = function () {
-  event.preventDefault()
-  debugger
-  $('#change-password, #sign-out, #game-board, #footer').removeClass('hidden')
-  $('#sign-up, #sign-in').addClass('hidden')
-}
-
 const signInSuccess = function (response) {
-  debugger
   $('#alert').html(`
-    <div class= "alert alert-success">
-      <button type="button" class="close" aria-hidden="true">&times;</button>
+    <div class= "alert alert-success alert-dismissable">
+      <button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>
       You Signed In!
     </div>
     `)
     $('#signInModal').modal('hide')
     signedInState()
+}
+
+const signedInState = function () {
+  $('#sign-out, #new-game, #change-password').removeClass('hidden')
+  $('#sign-up, #sign-in').addClass('hidden')
 }
 
 const signInError = function (error) {
@@ -70,9 +67,7 @@ const changePasswordError = function (error) {
 }
 
 const signedOutState = function () {
-  debugger
-  event.preventDefault()
-  $('#change-password, #sign-out, #game-board, #footer').addClass('hidden')
+  $('#change-password, #sign-out, #game-board, #footer, #new-game').addClass('hidden')
   $('#sign-up, #sign-in').removeClass('hidden')
 }
 
@@ -115,12 +110,12 @@ const updateUi = function (game) {
   }
 }
 
-const clearBoard = function () {
-  $('.square').html('')
-  boardLogic.game.boardState = []
-  boardLogic.game.squareValue = ''
-  boardLogic.game.winner = ''
-}
+// const clearBoard = function () {
+//   $('.square').html('')
+//   boardLogic.game.boardState = []
+//   boardLogic.game.squareValue = ''
+//   boardLogic.game.winner = ''
+// }
 
 const alreadyClicked = function () {
   $('#winMessage').html(`
@@ -129,6 +124,19 @@ const alreadyClicked = function () {
       Already Taken
     </div>
     `)
+}
+
+const createGameSuccess = function (response) {
+  store.game = response.game
+  $('#game-board, #footer').removeClass('hidden')
+  $('.square').html('')
+  store.boardStatus.boardState = []
+  store.boardStatus.squareValue = ''
+  store.boardStatus.winner = ''
+}
+
+const createGameError = function () {
+  console.log('error is ', error);
 }
 
 module.exports = {
@@ -141,6 +149,7 @@ module.exports = {
   changePasswordSuccess: changePasswordSuccess,
   changePasswordError: changePasswordError,
   updateUi: updateUi,
-  clearBoard: clearBoard,
-  alreadyClicked: alreadyClicked
+  alreadyClicked: alreadyClicked,
+  createGameSuccess: createGameSuccess,
+  createGameError: createGameError
 }

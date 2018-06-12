@@ -1,13 +1,5 @@
-
-let game = {
-  over: false,
-  winner: '',
-  winningCombo: [],
-  squareValue: '',
-  boardState: [],
-  xScore: 0,
-  oScore: 0
-}
+'use strict'
+const store = require('./store')
 
 const winCombos = [
   [0, 1, 2],
@@ -23,12 +15,16 @@ const winCombos = [
 const processMove = function (id) {
   setSquareValue(id)
   checkForWinners()
-  return game
+  return store.boardStatus
 }
 
 const setSquareValue = function (id) {
-  game.squareValue = game.squareValue == 'X' ? 'O' : 'X'
-  game.boardState[id] = game.squareValue
+  store.boardStatus.squareValue = store.boardStatus.squareValue == 'X' ? 'O' : 'X'
+  store.boardStatus.boardState[id] = store.boardStatus.squareValue
+  // store.boardStatus.boardState.forEach((v, k) => {
+  //   squares.push(k)
+  //   vals.push(v)
+  // })
 }
 
 function checkForWinners () {
@@ -38,22 +34,23 @@ function checkForWinners () {
 }
 
 const checkWin = function (a, b, c) {
-  if (!!game.boardState[a] && game.boardState[a] === game.boardState[b] && game.boardState[b] === game.boardState[c]) {
-    game.winner = game.squareValue
+  if (!!store.boardStatus.boardState[a] && store.boardStatus.boardState[a] === store.boardStatus.boardState[b] && store.boardStatus.boardState[b] === store.boardStatus.boardState[c]) {
+    store.boardStatus.winner = store.boardStatus.squareValue
     updateScore()
   }
 }
 
 const updateScore = function () {
-  if (game.winner === 'X') {
-    game.xScore ++
-  } else if (game.winner === 'O') {
-    game.oScore ++
+  if (store.boardStatus.winner === 'X') {
+    store.boardStatus.xScore ++
+  } else if (store.boardStatus.winner === 'O') {
+    store.boardStatus.oScore ++
   }
-  game.over = true
+  store.boardStatus.over = true
+
 }
 
 module.exports = {
   processMove: processMove,
-  game: game
+  updateScore: updateScore
 }

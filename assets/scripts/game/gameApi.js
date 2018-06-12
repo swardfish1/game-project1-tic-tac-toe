@@ -2,6 +2,7 @@
 const store = require('../store')
 const url = require('../config')
 const boardLogic = require('../boardLogic')
+console.log(boardLogic);
 
 
 const newGame = function (data) {
@@ -15,6 +16,27 @@ const newGame = function (data) {
   })
 }
 
+const updateState = function (index) {
+  console.log('store.game is ', store.game)
+  return $.ajax({
+    method: 'PATCH',
+    url: url.apiUrl + 'games/' + store.game.id,
+    data: {
+      game: {
+        cell: {
+          index: index,
+          value: store.boardStatus.squareValue
+        },
+        over: store.boardStatus.over
+      }
+    },
+    headers: {
+      Authorization: 'Token token=' + store.token
+    }
+  })
+}
+
 module.exports = {
-  newGame: newGame
+  newGame: newGame,
+  updateState: updateState
 }

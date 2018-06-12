@@ -3,6 +3,7 @@ const authEvents = require('./events')
 const boardLogic = require('./boardLogic')
 const ui = require ('./ui')
 const gameEvents = require('./game/gameEvents')
+const gameAPI = require('./game/gameApi')
 // use require with a reference to bundle the file and use it in this file
 // const example = require('./example')
 
@@ -20,8 +21,9 @@ $(() => {
     if (data.target.innerHTML) { ui.alreadyClicked() } else {
     const gameStatus = boardLogic.processMove(data.target.id)
     ui.updateUi(gameStatus)
-    gameEvents.updateGame(boardLogic.game)
-  }})
+    gameAPI.updateState(data.target.id)
+    }
+  })
   $('#winMessage').on('click', ui.clearBoard)
   $("#sign-out").on('click', ui.signedOutState)
   $('#new-game').on('click', gameEvents.onNewGame)

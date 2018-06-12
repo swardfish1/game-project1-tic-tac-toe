@@ -1,9 +1,13 @@
 const gameAPI = require('./gameApi')
 const store = require('../store')
+const boardLogic = require('../boardLogic')
+const ui = require('../ui')
 
 const onNewGame = function (event) {
-  event.preventDefault()
-  gameAPI.newGame(store.token)
+  let data = {}
+  gameAPI.newGame(data)
+  .then(ui.createGameSuccess)
+  .catch(ui.createGameError)
 }
 
 
