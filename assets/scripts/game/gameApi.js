@@ -17,7 +17,6 @@ const newGame = function (data) {
 }
 
 const updateState = function (index) {
-  console.log('store.game is ', store.game)
   return $.ajax({
     method: 'PATCH',
     url: url.apiUrl + 'games/' + store.game.id,

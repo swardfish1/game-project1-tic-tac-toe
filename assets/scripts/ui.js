@@ -40,8 +40,8 @@ const signedInState = function () {
 
 const signInError = function (error) {
   $('#alert').html(`
-    <div class= "alert alert-danger">
-      <button type="button" class="close" aria-hidden="true">&times;</button>
+    <div class= "alert alert-danger alert-dismissable">
+      <button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>
       Error Signing in.
     </div>
     `, error)
@@ -73,7 +73,7 @@ const signedOutState = function () {
 
 const signOutSuccess = function (response) {
   $('#alert').html(`
-    <div class= "alert alert-success alert-dismissable">
+    <div class= "alert alert-warning alert-dismissable">
       <button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>
       Signed Out
     </div>
@@ -83,7 +83,7 @@ const signOutSuccess = function (response) {
 
 const signOutFail = function (response) {
   $('#alert').html(`
-    <div class= "alert alert-danger alert-dismissable">
+    <div class= "alert alert-info alert-dismissable">
       <button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>
       Could not sign out.
     </div>
@@ -99,27 +99,20 @@ const updateUi = function (game) {
   $('#oscore').html(game.oScore)
   //display win winMessage
   if (game.winner){
-    $('#winMessage').html(`
-        <div class= "alert alert-success alert-dismissable">
+    $('#alert').html(`
+        <div class= "alert alert-info alert-dismissable">
           <div>
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
           Winner is: ${game.winner}
-          <button type="submit" id="clear" data-dismiss="alert" class="btn btn-sm close">Reset</button>
           </div>
         </div>
       `)
   }
 }
 
-// const clearBoard = function () {
-//   $('.square').html('')
-//   boardLogic.game.boardState = []
-//   boardLogic.game.squareValue = ''
-//   boardLogic.game.winner = ''
-// }
-
 const alreadyClicked = function () {
-  $('#winMessage').html(`
-    <div class= "alert alert-danger alert-dismissable">
+  $('#alert').html(`
+    <div class= "alert alert-warning alert-dismissable">
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
       Already Taken
     </div>
@@ -133,10 +126,21 @@ const createGameSuccess = function (response) {
   store.boardStatus.boardState = []
   store.boardStatus.squareValue = ''
   store.boardStatus.winner = ''
+  $('#alert').html(`
+    <div class= "alert alert-info alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      Great Success! Good Luck!!
+    </div>
+    `)
 }
 
 const createGameError = function () {
-  console.log('error is ', error);
+  $('#alert').html(`
+    <div class= "alert alert-danger alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      Already Taken
+    </div>
+    `)
 }
 
 module.exports = {
