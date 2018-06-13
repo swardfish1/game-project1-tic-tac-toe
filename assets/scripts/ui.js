@@ -15,9 +15,9 @@ const signUpSuccess = function (signUpResponse) {
 
 const signUpError = function (error) {
   $('#error').html(`
-    <div class= "alert alert-danger alert-dismissable">
+    <div class= "alert alert-danger alert-dismissable fade in">
       <button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>
-      Error signing up. Please check for errors.
+      Error signing up. ${error} <--Doofus
     </div>
     `)
 }
@@ -39,7 +39,7 @@ const signedInState = function () {
 }
 
 const signInError = function (error) {
-  $('#alert').html(`
+  $('#error').html(`
     <div class= "alert alert-danger alert-dismissable">
       <button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>
       Error Signing in.
@@ -58,7 +58,7 @@ const changePasswordSuccess = function (response) {
 }
 
 const changePasswordError = function (error) {
-  $('#alert').html(`
+  $('#error').html(`
     <div class= "alert alert-danger alert-dismissable">
       <button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>
       Could not change password.
@@ -82,7 +82,7 @@ const signOutSuccess = function (response) {
 }
 
 const signOutFail = function (response) {
-  $('#alert').html(`
+  $('#error').html(`
     <div class= "alert alert-info alert-dismissable">
       <button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>
       Could not sign out.
@@ -138,7 +138,7 @@ const createGameError = function () {
   $('#alert').html(`
     <div class= "alert alert-danger alert-dismissable">
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      Already Taken
+      Server error. Try Again
     </div>
     `)
 }

@@ -1,10 +1,27 @@
+.float-right {
+  float: right;
+}
+
+.modal-header, .title {
+  text-align: center;
+}
+
+.modal-footer {
+  text-align: center;
+}
+
+.btn {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.modal {
+  box-shadow: 10px 10px gray;
+}
+
 .col-md-2 {
   height: 175px;
   border: 2px solid black;
-}
-
-h1 {
-  text-align: center;
 }
 
 .square {
@@ -28,6 +45,8 @@ h1 {
 
 .table {
   overflow: hidden;
+  margin-left: 25%;
+
 }
 
 .hidden {
@@ -45,15 +64,22 @@ h1 {
   border-bottom: 2px solid gray;
 }
 
+.form-control {
+  margin-bottom: 10px;
+}
+
+.ng {
+  margin-left: 45%;
+  margin-bottom: 30px;
+}
+
 .scoreBox {
-  overflow: hidden;
   border: 1px solid gray;
   border-radius: 5px;
   text-align: center;
-  padding: 15px;
-  padding-top: 5px;
-  margin: 0 auto;
-  margin-right: 100px;
+  padding: 5px 15px;
+  margin-left: 38%;
+  margin-bottom: 20px;
   width: 300px;
   float: left;
 }

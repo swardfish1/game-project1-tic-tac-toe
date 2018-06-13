@@ -14,7 +14,7 @@
 
     <body>
       <div class="container">
-        <div class="btn-group" role="group" aria-label="...">
+        <div class="header">
           <button id="sign-up" type="button" class="btn btn-primary" data-toggle="modal" data-target="#signUpModal">
             Sign Up
           </button>
@@ -26,9 +26,9 @@
           </button>
           <button id="sign-out" class="btn btn-danger hidden">Sign Out</button>
         </div>
-        <br><br>
-        <h1>The Worlds Greatest Game</h1>
+        <hr>
         <div id="alert"></div>
+        <h1 class="title">The Worlds Greatest Game</h1>
 
         <!--Sign Up Modal-->
         <div class="modal fade" tabindex="-1" role="dialog" id="signUpModal">
@@ -47,11 +47,10 @@
                   Email: <input type="text" name="credentials[email]" placeholder="Email" class="form-control">
                   Password: <input type="password" name="credentials[password]" placeholder="Pick a password, any password." class="form-control">
                   Confirm Password: <input name="credentials[password_confirmation]" type="password" placeholder="Make sure it matches!" class="form-control">
-                  <button type="submit" class="btn btn-sm btn-primary btn-modal">Sign In</button>
-                  <br>
+                  <button type="submit" class="btn btn-primary btn-modal float-right">Sign In</button>
+                  <button type="button" class="btn btn-info btn-modal float-right" data-dismiss="modal">Cancel</button>
                 </form>
-                <div class="modal-footer">
-                  <h6>Copyright &copy; 2018 The Cake is a Lie. All rights reserved.</h6>
+                <br><br><br>
                 </div>
               </div>
             </div>
@@ -75,11 +74,10 @@
                   <input type="text" name="credentials[email]" placeholder="Email" class="form-control">
                   Password:
                   <input type="password" name="credentials[password]" placeholder="Pick a password, any password. As long as its your password" class="form-control">
-                  <button type="submit" class="btn btn-sm btn-primary btn-modal">Sign In</button>
+                  <button type="submit" class="btn btn-primary btn-modal float-right">Sign In</button>
+                  <button type="button" class="btn btn-info btn-modal float-right" data-dismiss="modal">Cancel</button>
                 </form>
-              </div>
-              <div class="modal-footer footer">
-                <h6>Copyright &copy; 2018 The Cake is a Lie. All rights reserved.</h6>
+                <br><br><br>
               </div>
             </div>
           </div>
@@ -100,18 +98,14 @@
                 <form class="form-inline" id="change-password">
                   New Password: <input type="password" name="passwords[new]" placeholder="New Password" class="form-control">
                   Old Password: <input type="password" name="passwords[old]" placeholder="Old Password" class="form-control">
-                  <button type="submit" class="btn btn-sm btn-primary btn-modal">Change Password</button>
+                  <button type="submit" class="btn btn-primary btn-modal float-right">Change Password</button>
+                  <button type="button" class="btn btn-info btn-modal float-right" data-dismiss="modal">Cancel</button>
                 </form>
-              </div>
-              <div class="modal-footer">
-                <h6>Copyright &copy; 2018 The Cake is a Lie. All rights reserved.</h6>
+                <br><br><br>
               </div>
             </div>
           </div>
         </div>
-        <button class="btn btn-primary hidden" id="new-game">New Game</button>
-
-        <br><br><br><br>
 
         <div id="winMessage"></div>
         <div id="footer" class="scoreBox hidden">
@@ -119,6 +113,9 @@
           <div id="playerOne" class="p1"><h5 id="name1">PLAYER ONE </h5><h5 id="xscore">0</h5></div>
           <div id="playerTwo" class="p2"><h5 id="name2">PLAYER TWO </h5><h5 id="oscore">0</h5></div>
         </div>
+
+        <button class="btn btn-primary ng hidden" id="new-game">New Game</button>
+
         <div class="table hidden" id="game-board">
           <div class="row">
             <div id="0" class="square col-md-2 col-sm-2 col-xs-1 lt-box"></div>
@@ -136,10 +133,9 @@
             <div id="8" class="square col-md-2 col-sm-2 col-xs-1 rb-box"></div>
           </div>
         </div>
-
-<hr>
+<div class="container"><hr></div>
       <div class="footer-cake">
-        <h6>Copyright &copy; 2018 The Cake is a Lie. All rights reserved.</h6>
+        <h6>The Cake is a Lie. All rights reserved. I built this</h6>
       </div>
       </div>
     </body>
