@@ -1,6 +1,5 @@
 'use strict'
 const store = require('./store')
-
 const winCombos = [
   [0, 1, 2],
   [3, 4, 5],
@@ -11,15 +10,19 @@ const winCombos = [
   [0, 4, 8],
   [2, 4, 6]
 ]
+let click = 1
 
 const processMove = function (id) {
-  setSquareValue(id)
-  checkForWinners()
-  return store.boardStatus
+  if (click < 9) {
+    setSquareValue(id)
+    checkForWinners()
+    click++
+    return store.boardStatus
+  }
 }
 
 const setSquareValue = function (id) {
-  store.boardStatus.squareValue = store.boardStatus.squareValue == 'X' ? 'O' : 'X'
+  store.boardStatus.squareValue = store.boardStatus.squareValue === 'X' ? 'O' : 'X'
   store.boardStatus.boardState[id] = store.boardStatus.squareValue
   // store.boardStatus.boardState.forEach((v, k) => {
   //   squares.push(k)
@@ -34,20 +37,22 @@ function checkForWinners () {
 }
 
 const checkWin = function (a, b, c) {
-  if (!!store.boardStatus.boardState[a] && store.boardStatus.boardState[a] === store.boardStatus.boardState[b] && store.boardStatus.boardState[b] === store.boardStatus.boardState[c]) {
+  if (!!store.boardStatus.boardState[a] &&
+      store.boardStatus.boardState[a] === store.boardStatus.boardState[b] &&
+      store.boardStatus.boardState[b] === store.boardStatus.boardState[c]) {
     store.boardStatus.winner = store.boardStatus.squareValue
     updateScore()
   }
 }
 
 const updateScore = function () {
+  debugger
   if (store.boardStatus.winner === 'X') {
-    store.boardStatus.xScore ++
-  } else if (store.boardStatus.winner === 'O') {
-    store.boardStatus.oScore ++
+    store.boardStatus.xScore++
+  } else if (store.boardStat.winner === 'O') {
+    store.boardStatus.oScore++
   }
   store.boardStatus.over = true
-
 }
 
 module.exports = {

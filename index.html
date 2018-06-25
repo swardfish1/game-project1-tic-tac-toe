@@ -42,7 +42,7 @@
                 <h2 class="modal-title">Sign Up</h2>
               </div>
               <div class="modal-body">
-                <div id="error"></div>
+                <div id="errorSU"></div>
                 <form class="form" id="sign-up-form">
                   Email: <input type="text" name="credentials[email]" placeholder="Email" class="form-control">
                   Password: <input type="password" name="credentials[password]" placeholder="Pick a password, any password." class="form-control">
@@ -68,7 +68,7 @@
                 <h2 class="modal-title">Sign In</h2>
               </div>
               <div class="modal-body">
-                <div id="error"></div>
+                <div id="errorSI"></div>
                 <form class="form" id="sign-in-form">
                   Email:
                   <input type="text" name="credentials[email]" placeholder="Email" class="form-control">
@@ -94,10 +94,10 @@
                 <h2 class="modal-title">Change Password</h2>
               </div>
               <div class="modal-body">
-                <div id="error"></div>
-                <form class="form-inline" id="change-password">
-                  New Password: <input type="password" name="passwords[new]" placeholder="New Password" class="form-control">
+                <div id="errorCP"></div>
+                <form class="form-inline" id="change-password-form">
                   Old Password: <input type="password" name="passwords[old]" placeholder="Old Password" class="form-control">
+                  New Password: <input type="password" name="passwords[new]" placeholder="New Password" class="form-control">
                   <button type="submit" class="btn btn-primary btn-modal float-right">Change Password</button>
                   <button type="button" class="btn btn-info btn-modal float-right" data-dismiss="modal">Cancel</button>
                 </form>
@@ -106,6 +106,7 @@
             </div>
           </div>
         </div>
+
 
         <div id="winMessage"></div>
         <div id="footer" class="scoreBox hidden">
@@ -133,6 +134,7 @@
             <div id="8" class="square col-md-2 col-sm-2 col-xs-1 rb-box"></div>
           </div>
         </div>
+        <button type="submit" id="getGames">Show All Games</button>
 <div class="container"><hr></div>
       <div class="footer-cake">
         <h6>The Cake is a Lie. All rights reserved. I built this</h6>

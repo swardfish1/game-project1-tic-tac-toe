@@ -17,7 +17,7 @@ const onSignIn = function (event) {
   const data = getFormFields(event.target)
   api.signIn(data)
     .then((result) => {
-      store.token = result.user.token
+      store.user = result.user
       ui.signInSuccess()
     })
     .catch(ui.signInError)
@@ -26,7 +26,6 @@ const onSignIn = function (event) {
 const onChangePassword = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
-
   api.changePassword(data)
     .then(ui.changePasswordSuccess)
     .catch(ui.changePasswordError)

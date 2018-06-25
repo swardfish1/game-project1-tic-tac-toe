@@ -11,7 +11,7 @@ const newGame = function (data) {
     url: url.apiUrl + 'games',
     data: data,
     headers: {
-      Authorization: 'Token token=' + store.token
+      Authorization: 'Token token=' + store.user.token
     }
   })
 }
@@ -30,7 +30,17 @@ const updateState = function (index) {
       }
     },
     headers: {
-      Authorization: 'Token token=' + store.token
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
+const getGame = function (index) {
+  return $.ajax({
+    method: 'GET',
+    url: config.apiUrl + '/games'
+    headers: {
+      Authorization: 'Token token=' + store.user.token
     }
   })
 }

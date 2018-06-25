@@ -1,23 +1,21 @@
 'use strict'
 const store = require('./store')
-const boardLogic = require('./boardLogic')
 
 const signUpSuccess = function (signUpResponse) {
   $('#alert').html(`
     <div class= "alert alert-success alert-dismissable">
       <button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>
-      Signed up! Get playing!
+      Signed up! Sign in!
     </div>
     `)
-    $('#signUpModal').modal('hide')
-    signedInState()
+  $('#signUpModal').modal('hide')
 }
 
 const signUpError = function (error) {
-  $('#error').html(`
+  $('#errorSU').html(`
     <div class= "alert alert-danger alert-dismissable fade in">
       <button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>
-      Error signing up. ${error} <--Doofus
+      Error signing up. Please check fields for errors.
     </div>
     `)
 }
@@ -29,8 +27,8 @@ const signInSuccess = function (response) {
       You Signed In!
     </div>
     `)
-    $('#signInModal').modal('hide')
-    signedInState()
+  $('#signInModal').modal('hide')
+  signedInState()
 }
 
 const signedInState = function () {
@@ -39,7 +37,7 @@ const signedInState = function () {
 }
 
 const signInError = function (error) {
-  $('#error').html(`
+  $('#errorSI').html(`
     <div class= "alert alert-danger alert-dismissable">
       <button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>
       Error Signing in.
@@ -58,7 +56,7 @@ const changePasswordSuccess = function (response) {
 }
 
 const changePasswordError = function (error) {
-  $('#error').html(`
+  $('#errorCP').html(`
     <div class= "alert alert-danger alert-dismissable">
       <button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>
       Could not change password.
@@ -90,23 +88,20 @@ const signOutFail = function (response) {
     `)
 }
 
-const updateUi = function (game) {
-  for (var i = 0; i < game.boardState.length; i++) {
-    $(`#${i}`).html(game.boardState[i])
-  }
-  //updateScore
-  $('#xscore').html(game.xScore)
-  $('#oscore').html(game.oScore)
-  //display win winMessage
-  if (game.winner){
+const updateUi = function (game, data) {
+  const id = data.target.id
+  console.log('id is', id)
+  $(`#${id}`).html(store.boardStatus.boardState[id])
+
+// display win winMessage
+  if (store.game.winner) {
     $('#alert').html(`
         <div class= "alert alert-info alert-dismissable">
           <div>
           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-          Winner is: ${game.winner}
+          Winner is: ${store.game.winner}
           </div>
-        </div>
-      `)
+        </div>`)
   }
 }
 

@@ -25,7 +25,7 @@ const changePassword = function (data) {
     url: url.apiUrl + 'change-password',
     data: data,
     headers: {
-      Authorization: 'Token token=' + store.token
+      Authorization: 'Token token=' + store.user.token
     }
   })
 }
@@ -35,7 +35,7 @@ const signOut = function () {
     method: 'DELETE',
     url: url.apiUrl + 'sign-out',
     headers: {
-      Authorization: 'Token token=' + store.token
+      Authorization: 'Token token=' + store.user.token
     }
   })
 }
