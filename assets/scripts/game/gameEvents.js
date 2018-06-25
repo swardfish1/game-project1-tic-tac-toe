@@ -12,6 +12,7 @@ const onNewGame = function (event) {
 }
 
 const getGames = function(event){
+  console.log('getGames is work?');
   let data = store.game
   gameAPI.getGame(data)
   .then(ui.showGames)

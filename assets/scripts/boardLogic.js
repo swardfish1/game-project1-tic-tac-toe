@@ -18,6 +18,8 @@ const processMove = function (id) {
     checkForWinners()
     click++
     return store.boardStatus
+  } else {
+    click = 1
   }
 }
 
@@ -46,7 +48,6 @@ const checkWin = function (a, b, c) {
 }
 
 const updateScore = function () {
-  debugger
   if (store.boardStatus.winner === 'X') {
     store.boardStatus.xScore++
   } else if (store.boardStat.winner === 'O') {

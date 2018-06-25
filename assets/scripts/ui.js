@@ -8,6 +8,7 @@ const signUpSuccess = function (signUpResponse) {
       Signed up! Sign in!
     </div>
     `)
+    $('#sign-up-form').trigger('reset')
   $('#signUpModal').modal('hide')
 }
 
@@ -15,9 +16,10 @@ const signUpError = function (error) {
   $('#errorSU').html(`
     <div class= "alert alert-danger alert-dismissable fade in">
       <button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>
-      Error signing up. Please check fields for errors.
+      Error signing up. Please check fields for errors. #{error}
     </div>
     `)
+  $('#sign-up-form').trigger('reset')
 }
 
 const signInSuccess = function (response) {
@@ -27,6 +29,7 @@ const signInSuccess = function (response) {
       You Signed In!
     </div>
     `)
+  $('#sign-in-form').trigger('reset')
   $('#signInModal').modal('hide')
   signedInState()
 }
@@ -43,6 +46,7 @@ const signInError = function (error) {
       Error Signing in.
     </div>
     `, error)
+    $('#sign-in-form').trigger('reset')
 }
 
 const changePasswordSuccess = function (response) {
@@ -52,6 +56,7 @@ const changePasswordSuccess = function (response) {
       Password Changed!
     </div>
     `)
+    $('#change-password-form').trigger('reset')
     $('#changePasswordModal').modal('hide')
 }
 
@@ -59,9 +64,10 @@ const changePasswordError = function (error) {
   $('#errorCP').html(`
     <div class= "alert alert-danger alert-dismissable">
       <button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>
-      Could not change password.
+      Could not change password.${error}
     </div>
     `)
+  $('#change-password-form').trigger('reset')
 }
 
 const signedOutState = function () {
@@ -76,7 +82,7 @@ const signOutSuccess = function (response) {
       Signed Out
     </div>
     `)
-    signedOutState()
+  signedOutState()
 }
 
 const signOutFail = function (response) {
@@ -90,19 +96,19 @@ const signOutFail = function (response) {
 
 const updateUi = function (game, data) {
   const id = data.target.id
-  console.log('id is', id)
   $(`#${id}`).html(store.boardStatus.boardState[id])
 
-// display win winMessage
-  if (store.game.winner) {
+  // display win winMessage
+  if (store.boardStatus.winner) {
     $('#alert').html(`
         <div class= "alert alert-info alert-dismissable">
           <div>
           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-          Winner is: ${store.game.winner}
+          Winner is: ${store.boardStatus.winner}
           </div>
         </div>`)
   }
+
 }
 
 const alreadyClicked = function () {

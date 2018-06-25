@@ -36,6 +36,7 @@ const updateState = function (index) {
 }
 
 const getGame = function (index) {
+  console.log('ApI def no werk');
   return $.ajax({
     method: 'GET',
     url: config.apiUrl + '/games',

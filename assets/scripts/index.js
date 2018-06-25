@@ -19,7 +19,7 @@ $(() => {
   $('#sign-out').on('click', authEvents.onSignOut)
   $('.square').on('click', function (data) {
     event.preventDefault()
-    if (store.boardStatus.over === true) { return } else if (data.target.innerHTML) { ui.alreadyClicked() } else {
+    if (data.target.innerHTML) { ui.alreadyClicked() } else {
       const gameStatus = boardLogic.processMove(data.target.id)
       gameAPI.updateState(data.target.id)
       ui.updateUi(gameStatus, data)
