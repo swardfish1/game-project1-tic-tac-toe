@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Woo it Works</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+
+    <body>
+      <div class="container">
+        <div class="header">
+          <button id="sign-up" type="button" class="btn btn-primary" data-toggle="modal" data-target="#signUpModal">
+            Sign Up
+          </button>
+          <button id="sign-in" type="button" class="btn btn-primary" data-toggle="modal" data-target="#signInModal">
+            Sign In
+          </button>
+          <button id="change-password" type="button" class="btn btn-primary hidden" data-toggle="modal" data-target="#changePasswordModal">
+            Change Password
+          </button>
+          <button id="sign-out" class="btn btn-danger hidden">Sign Out</button>
+        </div>
+        <hr>
+        <div id="alert"></div>
+        <h1 class="title">The Worlds Greatest Game</h1>
+
+        <!--Sign Up Modal-->
+        <div class="modal fade" tabindex="-1" role="dialog" id="signUpModal">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+
+                <h2 class="modal-title">Sign Up</h2>
+              </div>
+              <div class="modal-body">
+                <div id="errorSU"></div>
+                <form class="form" id="sign-up-form">
+                  Email: <input type="text" name="credentials[email]" placeholder="Email" class="form-control">
+                  Password: <input type="password" name="credentials[password]" placeholder="Pick a password, any password." class="form-control">
+                  Confirm Password: <input name="credentials[password_confirmation]" type="password" placeholder="Make sure it matches!" class="form-control">
+                  <button type="submit" class="btn btn-primary btn-modal float-right">Sign In</button>
+                  <button type="button" class="btn btn-info btn-modal float-right" data-dismiss="modal">Cancel</button>
+                </form>
+                <br><br><br>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--Sign In Modal-->
+        <div class="modal fade" tabindex="-1" role="dialog" id="signInModal">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <h2 class="modal-title">Sign In</h2>
+              </div>
+              <div class="modal-body">
+                <div id="errorSI"></div>
+                <form class="form" id="sign-in-form">
+                  Email:
+                  <input type="text" name="credentials[email]" placeholder="Email" class="form-control">
+                  Password:
+                  <input type="password" name="credentials[password]" placeholder="Pick a password, any password. As long as its your password" class="form-control">
+                  <button type="submit" class="btn btn-primary btn-modal float-right">Sign In</button>
+                  <button type="button" class="btn btn-info btn-modal float-right" data-dismiss="modal">Cancel</button>
+                </form>
+                <br><br><br>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--Change Pword Modal-->
+        <div class="modal fade" tabindex="-1" role="dialog" id="changePasswordModal">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <h2 class="modal-title">Change Password</h2>
+              </div>
+              <div class="modal-body">
+                <div id="errorCP"></div>
+                <form class="form-inline" id="change-password-form">
+                  Old Password: <input type="password" name="passwords[old]" placeholder="Old Password" class="form-control">
+                  New Password: <input type="password" name="passwords[new]" placeholder="New Password" class="form-control">
+                  <button type="submit" class="btn btn-primary btn-modal float-right">Change Password</button>
+                  <button type="button" class="btn btn-info btn-modal float-right" data-dismiss="modal">Cancel</button>
+                </form>
+                <br><br><br>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div id="winMessage"></div>
+        <div id="footer" class="scoreBox hidden">
+          <div class="scoreboard"><h4>Score</h4></div>
+          <div id="playerOne" class="p1"><h5 id="name1">PLAYER ONE </h5><h5 id="xscore">0</h5></div>
+          <div id="playerTwo" class="p2"><h5 id="name2">PLAYER TWO </h5><h5 id="oscore">0</h5></div>
+        </div>
+
+        <button class="btn btn-primary ng hidden" id="new-game">New Game</button>
+
+        <div class="table hidden" id="game-board">
+          <div class="row">
+            <div id="0" class="square col-md-2 col-sm-2 col-xs-1 lt-box"></div>
+            <div id="1" class="square col-md-2 col-sm-2 col-xs-1 mt-box"></div>
+            <div id="2" class="square col-md-2 col-sm-2 col-xs-1 rt-box"></div>
+          </div>
+          <div class="row">
+            <div id="3" class="square col-md-2 col-sm-2 col-xs-1 lm-box"></div>
+            <div id="4" class="square col-md-2 col-sm-2 col-xs-1 mm-box"></div>
+            <div id="5" class="square col-md-2 col-sm-2 col-xs-1 rm-box"></div>
+          </div>
+          <div class="row">
+            <div id="6" class="square col-md-2 col-sm-2 col-xs-1 lb-box"></div>
+            <div id="7" class="square col-md-2 col-sm-2 col-xs-1 mb-box"></div>
+            <div id="8" class="square col-md-2 col-sm-2 col-xs-1 rb-box"></div>
+          </div>
+        </div>
+        <button type="button" id="getGames">Show All Games</button>
+<div class="container"><hr></div>
+      <div class="footer-cake">
+        <h6>The Cake is a Lie. All rights reserved. I built this</h6>
+      </div>
+      </div>
+    </body>
+</html>
